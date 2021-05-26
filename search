@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<!--
+	SUN BLOG
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+
+		<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>GORILLA SUN BLOG</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="GORILLA SUN BLOG" />
+<meta name="author" content="Ahmad Moussa" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Welcome to The Archive. Here you can find a list of every single post I have ever written." />
+<meta property="og:description" content="Welcome to The Archive. Here you can find a list of every single post I have ever written." />
+<link rel="canonical" href="http://localhost:4000/search" />
+<meta property="og:url" content="http://localhost:4000/search" />
+<meta property="og:site_name" content="GORILLA SUN BLOG" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="GORILLA SUN BLOG" />
+<script type="application/ld+json">
+{"@type":"WebPage","headline":"GORILLA SUN BLOG","url":"http://localhost:4000/search","author":{"@type":"Person","name":"Ahmad Moussa"},"description":"Welcome to The Archive. Here you can find a list of every single post I have ever written.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+		<script data-ad-client="ca-pub-8883021699930297" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<script type="text/javascript">
+    window._mNHandle = window._mNHandle || {};
+    window._mNHandle.queue = window._mNHandle.queue || [];
+    medianet_versionId = "3121199";
+</script>
+<script src="https://contextual.media.net/dmedianet.js?cid=8CUGJ7XZ4" async="async"></script>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-86RZ6NM6CP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-86RZ6NM6CP');
+</script>
+		<link rel="stylesheet" href="https://gorillasun.de/assets/styles/gruvbox-dark.css">
+		<script src="https://gorillasun.de/assets/js/highlight.pack.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+		<title>GORILLA SUN BLOG</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
+		<link rel="shortcut icon" type="image/png" href="https://gorillasun.de/icon.png">
+
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<nav class="logo">
+									<a href="https://gorillasun.de/index.html" style='border-bottom: none;'><strong>HOME</strong></a>
+										&nbsp;
+									<a href="https://gorillasun.de/archive.html" style='border-bottom: none;'><strong>ARCHIVE</strong></a>
+										&nbsp;
+									<a href="https://gorillasun.de/about.html" style='border-bottom: none;'><strong>ABOUT</strong></a>
+									</nav>
+									<ul class="icons">
+
+										<li><a href="https://www.youtube.com/channel/UC7EHj4bPDbF95vEsXyrEsdQ/featured" class="icon brands fa-youtube"><span class="label">Youtube</span></a></li>
+										<li><a href="https://twitter.com/gorillasu" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="https://github.com/AhmadMoussa" class="icon brands fa-github"><span class="label">Github</span></a></li>
+										<li><a href="https://gorillasun1.bandcamp.com/" class="icon brands fa-bandcamp"><span class="label">Bandcamp</span></a></li>
+										<li><a href="https://www.instagram.com/gorilla.sun/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="https://open.spotify.com/artist/7HnPKqvpn1g0CCJnAVOufm?si=ZgU53HqtS7CYburV-F40nQ" class="icon brands fa-spotify"><span class="label">Spotify</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Content -->
+
+							<div class="form  form--search">
+  <form id="contact-form" action="">
+    <label class="label" for="search">Search term:</label>
+    <input class="input" id="search" type="search" name="search" placeholder="e.g. About us" autocomplete="off" />
+
+    <ul class="list  list--results" id="list">
+        <!-- results go here -->
+    </ul>
+  </form>
+</div>
+
+<script type="text/javascript" src="assets/scripts/fetch.js"></script>
+<script type="text/javascript">
+  const endpoint = '/assets/search.json';
+
+  const pages = [];
+
+  fetch(endpoint)
+    .then(blob => blob.json())
+    .then(data => pages.push(...data))
+
+  function findResults(termToMatch, pages) {
+    return pages.filter(item => {
+      const regex = new RegExp(termToMatch, 'gi');
+      return item.title.match(regex) || item.content.match(regex);
+    });
+  }
+
+  function displayResults() {
+    const resultsArray = findResults(this.value, pages);
+    const html = resultsArray.map(item => {
+      return `
+        <li class="item  item--result">
+          <article class="article  typeset">
+            <h4><a href="${item.url}">${item.title}</a></h4>
+            <p>${item.excerpt}</p>
+          </article>
+        </li>`;
+    }).join('');
+    if ((resultsArray.length == 0) || (this.value == '')) {
+      resultsList.innerHTML = `<p>Sorry, nothing was found</p>`;
+    } else {
+      resultsList.innerHTML = html;
+    }
+  }
+
+  const field = document.querySelector('#search');
+  const resultsList = document.querySelector('#list');
+
+  field.addEventListener('keyup', displayResults);
+
+  field.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+    }
+  });
+</script>
+<noscript>Please enable JavaScript to use the search form.</noscript>
+
+
+						</div>
+					</div>
+
+					<!-- Sidebar
+
+						<div id="sidebar">
+							<div class="inner">
+
+
+									<nav id="menu">
+										<header class="major">
+											<h2>Menu</h2>
+										</header>
+										<ul>
+											<li><a href="https://gorillasun.de/index.html">Homepage</a></li>
+											<li><a href="https://gorillasun.de/archive.html">Archive</a></li>
+											<li><a href="https://gorillasun.de/gallery.html">Gallery</a></li>
+											<li><a href="https://gorillasun.de/about.html">About</a></li>
+
+										</ul>
+									</nav>
+
+
+
+									<section>
+										<header class="major">
+											<h2>Get in touch</h2>
+										</header>
+										<p>Shoot me a message! Via email or DM me on social media: </p>
+										<ul class="contact">
+											<li class="icon solid fa-envelope"><a href="#">gorillasuncontact@gmail.com</a></li>
+											<li class="icon brands fa-instagram"><a href="https://www.instagram.com/gorilla.sun/" >@gorilla.sun</li>
+											<li class="icon brands fa-twitter"><a href="https://twitter.com/gorillasu" >@gorilla.su</li>
+										</ul>
+									</section>
+
+
+									<footer id="footer">
+										<p class="copyright">&copy; GorillaSun. All rights reserved. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+									</footer>
+
+							</div>
+						</div>
+		-->
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="https://gorillasun.de/assets/js/jquery.min.js"></script>
+			<script src="https://gorillasun.de/assets/js/browser.min.js"></script>
+			<script src="https://gorillasun.de/assets/js/breakpoints.min.js"></script>
+			<script src="https://gorillasun.de/assets/js/util.js"></script>
+			<script src="https://gorillasun.de/assets/js/main.js"></script>
+			<script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101299145);</script>
+			<script async src="//static.getclicky.com/js"></script>
+
+	</body>
+</html>
