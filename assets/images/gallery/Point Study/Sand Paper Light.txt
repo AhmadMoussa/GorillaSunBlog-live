@@ -1,0 +1,39 @@
+// noprotect
+function setup() {
+  createCanvas(400, 400);
+  xoff = 50;
+  yoff = 50;
+
+  frameRate(60);
+}
+
+function draw() {
+  background(255);
+  fill(255, 127.5, 50);
+  noStroke();
+  //rect(100,100,200)
+
+  strokeWeight(1);
+  for (j = 1; j < 2; j++) {
+    for (i = 0; i < 20; i++) {
+      stroke(0);
+      for (x = 0; x < width - xoff * 2; x++) {
+        for (y = 0; y < height - yoff * 2; y++) {
+          var n = noise(x * 0.008 , y * 0.04);
+          if (random(1) > 0.9 - 0.01 * i - n / 5) {
+            strokeWeight(
+              random(
+                0.1  ,
+                1.2 - n*3 
+              )
+            );
+
+            point(xoff + x  + random(-2, 2),
+                  yoff + y + random(-3, 3));
+          }
+        }
+      }
+    }
+  }
+  noLoop();
+}
